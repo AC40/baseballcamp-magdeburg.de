@@ -1,47 +1,166 @@
-<section class="section">
+---
+const faqs = [
+  {
+    question: "Für wen ist das Camp geeignet?",
+    answer:
+      "Das Camp richtet sich an alle Altersgruppen ab 8 Jahren. Sowohl Anfänger als auch fortgeschrittene Spieler sind willkommen. Die Trainingseinheiten werden nach Leistungsniveau gruppiert.",
+  },
+  {
+    question: "Was muss ich mitbringen?",
+    answer:
+      "Sportkleidung, Turnschuhe und ausreichend Wasser. Falls vorhanden, können eigene Baseball-Handschuhe und Schläger mitgebracht werden. Alle notwendigen Materialien werden jedoch auch gestellt.",
+  },
+  {
+    question: "Wie lange dauert das Camp täglich?",
+    answer:
+      "Das tägliche Programm läuft von 9:00 Uhr bis 17:00 Uhr. Inklusive Mittagspause und verschiedenen Trainingseinheiten.",
+  },
+  {
+    question: "Gibt es eine Altersbeschränkung?",
+    answer:
+      "Das Camp ist für Teilnehmer ab 8 Jahren geeignet. Es gibt keine obere Altersgrenze. Erwachsene sind ebenfalls herzlich willkommen.",
+  },
+  {
+    question: "Werden die Coaches Deutsch sprechen?",
+    answer:
+      "Die Coaches sprechen Englisch, werden aber von deutschsprachigen Assistenten unterstützt. Baseball ist eine universelle Sprache und die Kommunikation funktioniert auch ohne perfekte Sprachkenntnisse.",
+  },
+];
+---
+
+<section id="faq-section" class="section fade-in">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-4xl md:text-5xl font-black text-outline uppercase mb-8 text-center">
       Häufige Fragen
     </h2>
     <div class="card">
-      <div class="faq-item">
-        <div class="faq-question text-xl md:text-2xl">Für wen ist das Camp geeignet?</div>
-        <div class="faq-answer text-lg">
-          Das Camp richtet sich an alle Altersgruppen ab 8 Jahren. Sowohl Anfänger als auch
-          fortgeschrittene Spieler sind willkommen. Die Trainingseinheiten werden nach
-          Leistungsniveau gruppiert.
+      {faqs.map((faq, index) => (
+        <div class="faq-item" style={`transition-delay: ${index * 0.1}s`}>
+          <button class="faq-question text-xl md:text-2xl w-full text-left flex items-center justify-between">
+            <span>{faq.question}</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer text-lg">{faq.answer}</div>
         </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question text-xl md:text-2xl">Was muss ich mitbringen?</div>
-        <div class="faq-answer text-lg">
-          Sportkleidung, Turnschuhe und ausreichend Wasser. Falls vorhanden, können eigene
-          Baseball-Handschuhe und Schläger mitgebracht werden. Alle notwendigen Materialien
-          werden jedoch auch gestellt.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question text-xl md:text-2xl">Wie lange dauert das Camp täglich?</div>
-        <div class="faq-answer text-lg">
-          Das tägliche Programm läuft von 9:00 Uhr bis 17:00 Uhr. Inklusive Mittagspause und
-          verschiedenen Trainingseinheiten.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question text-xl md:text-2xl">Gibt es eine Altersbeschränkung?</div>
-        <div class="faq-answer text-lg">
-          Das Camp ist für Teilnehmer ab 8 Jahren geeignet. Es gibt keine obere Altersgrenze.
-          Erwachsene sind ebenfalls herzlich willkommen.
-        </div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-question text-xl md:text-2xl">Werden die Coaches Deutsch sprechen?</div>
-        <div class="faq-answer text-lg">
-          Die Coaches sprechen Englisch, werden aber von deutschsprachigen Assistenten unterstützt.
-          Baseball ist eine universelle Sprache und die Kommunikation funktioniert auch ohne
-          perfekte Sprachkenntnisse.
-        </div>
-      </div>
+      ))}
     </div>
   </div>
 </section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const faqItems = document.querySelectorAll(".faq-item");
+    faqItems.forEach((item) => {
+      const button = item.querySelector("button");
+      const answer = item.querySelector(".faq-answer") as HTMLElement;
+      const icon = item.querySelector(".faq-icon") as HTMLElement;
+
+      if (!button || !answer || !icon) return;
+
+      button.addEventListener("click", () => {
+        const isOpen = item.hasAttribute("data-open");
+
+        faqItems.forEach((otherItem) => {
+          if (otherItem !== item) {
+            const otherAnswer = otherItem.querySelector(".faq-answer") as HTMLElement;
+            const otherIcon = otherItem.querySelector(".faq-icon") as HTMLElement;
+            if (otherAnswer && otherIcon) {
+              otherAnswer.style.maxHeight = "0";
+              otherAnswer.style.opacity = "0";
+              otherAnswer.style.paddingTop = "0";
+              otherAnswer.style.paddingBottom = "0";
+              otherIcon.textContent = "+";
+              otherIcon.style.transform = "rotate(0deg)";
+              otherItem.removeAttribute("data-open");
+            }
+          }
+        });
+
+        if (isOpen) {
+          answer.style.maxHeight = "0";
+          answer.style.opacity = "0";
+          answer.style.paddingTop = "0";
+          answer.style.paddingBottom = "0";
+          icon.textContent = "+";
+          icon.style.transform = "rotate(0deg)";
+          item.removeAttribute("data-open");
+        } else {
+          answer.style.paddingTop = "1rem";
+          answer.style.paddingBottom = "0.5rem";
+          answer.style.opacity = "1";
+          // expand to full content height, then remove max-height so cut-off cannot happen on font-load
+          const fullHeight = answer.scrollHeight + 40;
+          answer.style.maxHeight = fullHeight + "px";
+          icon.textContent = "−";
+          icon.style.transform = "rotate(180deg)";
+          item.setAttribute("data-open", "true");
+        }
+      });
+    });
+  });
+</script>
+
+<style>
+  .faq-item {
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+    transition-delay: inherit;
+  }
+
+  .fade-in.animate-in .faq-item {
+    opacity: 1;
+  }
+
+  .faq-question {
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .faq-item button {
+    background: none;
+    border: none;
+    color: inherit;
+    cursor: pointer;
+    padding: 0;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .faq-item button:hover {
+    opacity: 0.8;
+    transform: translateX(4px);
+  }
+
+  .faq-item button:active {
+    transform: translateX(2px);
+  }
+
+  .faq-icon {
+    font-size: 1.5em;
+    font-weight: 900;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    flex-shrink: 0;
+    margin-left: 1rem;
+    display: inline-block;
+  }
+
+  .faq-answer {
+    margin-top: 0.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      padding-top 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      padding-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    max-height: 0;
+    opacity: 0;
+    line-height: 1.6;
+  }
+
+  .faq-item[data-open="true"] .faq-answer {
+    padding-top: 1rem;
+    padding-bottom: 0.5rem;
+  }
+</style>

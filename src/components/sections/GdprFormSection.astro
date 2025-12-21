@@ -1,0 +1,44 @@
+<section class="section">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="text-4xl md:text-5xl font-black text-outline uppercase mb-8 text-center">
+      DSGVO-Anfrage
+    </h2>
+    <div class="card">
+      <p class="text-lg opacity-90 mb-6">
+        Nutze dieses Formular, um Auskunft über gespeicherte Daten zu erhalten, eine Löschung zu beantragen
+        oder Fragen zum Datenschutz zu stellen.
+      </p>
+      <form class="space-y-6">
+        <div>
+          <label class="block text-lg font-bold mb-2 uppercase">Vor- und Nachname</label>
+          <input type="text" class="input-field" placeholder="Erika Beispiel" required />
+        </div>
+        <div>
+          <label class="block text-lg font-bold mb-2 uppercase">E-Mail-Adresse</label>
+          <input type="email" class="input-field" placeholder="erika@example.com" required />
+        </div>
+        <div>
+          <label class="block text-lg font-bold mb-2 uppercase">Art der Anfrage</label>
+          <select class="input-field" required>
+            <option value="">Bitte wählen</option>
+            <option value="access">Datenauskunft</option>
+            <option value="deletion">Löschungsanfrage</option>
+            <option value="rectification">Berichtigung</option>
+            <option value="other">Sonstiges</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-lg font-bold mb-2 uppercase">Nachricht</label>
+          <textarea class="input-field" rows="4" placeholder="Beschreibe dein Anliegen" required></textarea>
+        </div>
+        <div>
+          <label class="flex items-center gap-2 text-lg">
+            <input type="checkbox" class="w-5 h-5" required />
+            <span>Ich bestätige, dass diese Anfrage meine eigenen Daten betrifft.</span>
+          </label>
+        </div>
+        <button type="submit" class="btn-primary w-full">Anfrage senden</button>
+      </form>
+    </div>
+  </div>
+</section>

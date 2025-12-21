@@ -1,4 +1,4 @@
-<section class="section">
+<section class="section fade-in">
   <div class="max-w-4xl mx-auto">
     <h2 class="text-4xl md:text-5xl font-black text-outline uppercase mb-8 text-center">
       Eindrücke
@@ -40,3 +40,24 @@
     </div>
   </div>
 </section>
+
+<style>
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border: 4px solid black;
+    background: black;
+  }
+
+  .video-container iframe,
+  .video-container video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+</style>

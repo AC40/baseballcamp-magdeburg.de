@@ -1,11 +1,31 @@
 ---
 import Head from "../components/Head.astro";
+import Nav from "../components/Nav.astro";
 import "../styles/global.css";
 ---
 
-<html lang="en">
+<html lang="de">
 	<Head />
 	<body>
+        <Nav />
         <slot />
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const observerOptions = {
+					threshold: 0.1,
+					rootMargin: "0px 0px -50px 0px",
+				};
+
+				const observer = new IntersectionObserver((entries) => {
+					entries.forEach((entry) => {
+						if (entry.isIntersecting) {
+							entry.target.classList.add("animate-in");
+						}
+					});
+				}, observerOptions);
+
+				document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+			});
+		</script>
 	</body>
 </html>

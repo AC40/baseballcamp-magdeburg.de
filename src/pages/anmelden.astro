@@ -1,0 +1,27 @@
+---
+import Layout from "../layouts/Layout.astro";
+import SignupSection from "../components/sections/SignupSection.astro";
+import SiteFooter from "../components/sections/SiteFooter.astro";
+---
+
+<Layout>
+  <div class="sunburst-bg min-h-screen">
+    <div class="halftone halftone-top-left"></div>
+    <div class="halftone halftone-bottom-right"></div>
+
+    <section class="section text-center">
+      <div class="max-w-3xl mx-auto space-y-4">
+        <p class="text-sm uppercase tracking-[0.3em]">Magdeburger Baseball Camp</p>
+        <h1 class="text-4xl md:text-6xl font-black text-outline uppercase">
+          Anmeldung
+        </h1>
+        <p class="text-lg opacity-90">
+          Sichere dir jetzt deinen Platz für das Baseball Camp.
+        </p>
+      </div>
+    </section>
+
+    <SignupSection />
+    <SiteFooter />
+  </div>
+</Layout>
