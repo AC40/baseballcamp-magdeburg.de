@@ -1,12 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
-
-
+import HeroSection from "../components/sections/HeroSection.astro";
+import AboutSection from "../components/sections/AboutSection.astro";
+import VideoSection from "../components/sections/VideoSection.astro";
+import FaqSection from "../components/sections/FaqSection.astro";
+import SignupSection from "../components/sections/SignupSection.astro";
+import LegalSection from "../components/sections/LegalSection.astro";
+import SiteFooter from "../components/sections/SiteFooter.astro";
 ---
 
-<Layout>	
+<Layout>
+  <div class="sunburst-bg min-h-screen">
+    <div class="halftone halftone-top-left"></div>
+    <div class="halftone halftone-bottom-right"></div>
 
-	<div class="bg-amber-200 p-4 text-black">
-		<h1>Astro</h1>
-	</div>
+    <HeroSection />
+    <AboutSection />
+    <VideoSection />
+    <FaqSection />
+    <SignupSection />
+    <LegalSection />
+    <SiteFooter />
+  </div>
 </Layout>

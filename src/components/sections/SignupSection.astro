@@ -1,0 +1,43 @@
+<section class="section">
+  <div class="max-w-2xl mx-auto">
+    <h2 class="text-4xl md:text-5xl font-black text-outline uppercase mb-8 text-center">
+      Anmeldung
+    </h2>
+    <div class="card">
+      <form class="space-y-6">
+        <div>
+          <label class="block text-lg font-bold mb-2 uppercase">Name</label>
+          <input type="text" class="input-field" placeholder="Max Mustermann" required />
+        </div>
+        <div>
+          <label class="block text-lg font-bold mb-2 uppercase">E-Mail</label>
+          <input type="email" class="input-field" placeholder="max@example.com" required />
+        </div>
+        <div>
+          <label class="block text-lg font-bold mb-2 uppercase">Telefon</label>
+          <input type="tel" class="input-field" placeholder="+49 123 456789" required />
+        </div>
+        <div>
+          <label class="block text-lg font-bold mb-2 uppercase">Alter</label>
+          <input type="number" class="input-field" placeholder="12" min="8" required />
+        </div>
+        <div>
+          <label class="block text-lg font-bold mb-2 uppercase">Erfahrungslevel</label>
+          <select class="input-field" required>
+            <option value="">Bitte wählen</option>
+            <option value="beginner">Anfänger</option>
+            <option value="intermediate">Fortgeschritten</option>
+            <option value="advanced">Erfahren</option>
+          </select>
+        </div>
+        <div>
+          <label class="flex items-center gap-2 text-lg">
+            <input type="checkbox" class="w-5 h-5" required />
+            <span>Ich akzeptiere die Teilnahmebedingungen und Datenschutzerklärung</span>
+          </label>
+        </div>
+        <button type="submit" class="btn-primary w-full">Jetzt Anmelden</button>
+      </form>
+    </div>
+  </div>
+</section>
