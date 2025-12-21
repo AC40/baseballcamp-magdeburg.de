@@ -26,6 +26,32 @@ import "../styles/global.css";
 
 				document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
 			});
+
+			const hashAliases: Record<string, string> = {
+				"#kontakt": "#contact",
+			};
+
+			const scrollToHashTarget = () => {
+				const rawHash = window.location.hash;
+				if (!rawHash) return;
+
+				const selector = hashAliases[rawHash.toLowerCase()] ?? rawHash;
+
+				try {
+					const target = document.querySelector(selector);
+					if (target) {
+						target.scrollIntoView({ block: "start" });
+					}
+				} catch {}
+			};
+
+			window.addEventListener("load", () => {
+				//arequestAnimationFrame(scrollToHashTarget);
+			});
+
+			window.addEventListener("hashchange", () => {
+				//requestAnimationFrame(scrollToHashTarget);
+			});
 		</script>
 	</body>
 </html>

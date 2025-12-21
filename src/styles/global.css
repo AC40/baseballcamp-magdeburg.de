@@ -169,3 +169,31 @@ body {
 .btn-primary:active {
   transform: scale(0.98);
 }
+
+@media (max-width: 640px) {
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .section {
+    padding: 3rem 1.25rem;
+  }
+
+  .card {
+    padding: 1.5rem;
+  }
+
+  .btn-primary {
+    width: 100%;
+    text-align: center;
+  }
+
+  .halftone-top-left,
+  .halftone-bottom-right {
+    width: 180px;
+    height: 180px;
+    opacity: 0.2;
+  }
+}

@@ -7,6 +7,11 @@ const currentPath = Astro.url.pathname;
     <a href="/" class="nav-logo">
       <img src="/logo.png" alt="Magdeburger Baseball Camp" class="nav-logo-img" />
     </a>
+    <button class="nav-toggle" aria-label="Menü öffnen" aria-expanded="false">
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span>
+    </button>
     <ul class="nav-links">
       <li>
         <a href="/" class={`nav-link ${currentPath === "/" ? "nav-link-active" : ""}`}>
@@ -31,13 +36,40 @@ const currentPath = Astro.url.pathname;
   </div>
 </nav>
 
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+    const links = document.querySelector<HTMLElement>(".nav-links");
+    const navLinkEls = Array.from(document.querySelectorAll<HTMLAnchorElement>(".nav-links a"));
+
+    if (!toggle || !links) return;
+
+    toggle.addEventListener("click", () => {
+      const isOpen = links.classList.toggle("nav-links-open");
+      toggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      document.body.classList.toggle("nav-locked", isOpen);
+    });
+
+    navLinkEls.forEach((link) =>
+      link.addEventListener("click", () => {
+        links.classList.remove("nav-links-open");
+        toggle.setAttribute("aria-expanded", "false");
+        document.body.classList.remove("nav-locked");
+      })
+    );
+  });
+</script>
+
 <style>
   .nav-container {
-    position: relative;
+    position: sticky;
+    top: 0;
+    width: 100%;
     z-index: 100;
     background: rgba(220, 38, 38, 0.95);
     backdrop-filter: blur(10px);
     border-bottom: 3px solid white;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
   }
 
   .nav-content {
@@ -48,6 +80,7 @@ const currentPath = Astro.url.pathname;
     align-items: center;
     justify-content: space-between;
     gap: 2rem;
+    position: relative;
   }
 
   .nav-logo {
@@ -68,6 +101,28 @@ const currentPath = Astro.url.pathname;
     margin: 0;
     padding: 0;
     flex-wrap: wrap;
+  }
+
+  .nav-toggle {
+    display: none;
+    background: rgba(255, 255, 255, 0.12);
+    border: 2px solid black;
+    border-radius: 10px;
+    padding: 0.45rem 0.5rem;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .nav-toggle:active {
+    transform: scale(0.96);
+  }
+
+  .nav-toggle-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: black;
+    margin: 4px 0;
   }
 
   .nav-link {
@@ -118,25 +173,108 @@ const currentPath = Astro.url.pathname;
     border-color: black;
   }
 
+  :global(body.nav-locked) {
+    overflow: hidden;
+  }
+
   @media (max-width: 768px) {
     .nav-content {
-      flex-direction: column;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 1rem;
       gap: 1rem;
     }
 
+    .nav-logo-img {
+      height: 42px;
+    }
+
+    .nav-toggle {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      background: var(--yellow-explosion);
+      border: 3px solid black;
+      border-radius: 6px;
+      padding: 0.5rem;
+    }
+
+    .nav-toggle-bar {
+      width: 24px;
+      height: 3px;
+      background: black;
+      margin: 0;
+      border-radius: 2px;
+    }
+
     .nav-links {
-      justify-content: center;
-      gap: 0.75rem;
+      display: none;
+      position: fixed;
+      top: 72px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      flex-direction: column;
+      gap: 0;
+      background: var(--red-primary);
+      border-top: 3px solid white;
+      border-bottom: 3px solid white;
+      padding: 0;
+      margin: 0;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      z-index: 99;
+    }
+
+    .nav-links.nav-links-open {
+      display: flex;
+    }
+
+    .nav-links li {
+      width: 100%;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .nav-links li:last-child {
+      border-bottom: none;
     }
 
     .nav-link {
-      font-size: 0.8rem;
-      padding: 0.4rem 0.75rem;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 1.1rem;
+      padding: 1rem;
+      border: none;
+      border-radius: 0;
+    }
+
+    .nav-link:hover {
+      background: rgba(251, 191, 36, 0.15);
+      border: none;
+    }
+
+    .nav-link-active {
+      background: var(--yellow-explosion);
+      color: black;
+      border: none;
     }
 
     .nav-link-prominent {
-      font-size: 0.8rem;
-      padding: 0.4rem 1rem;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 1.2rem;
+      padding: 1.25rem;
+      border: none;
+      border-radius: 0;
+      background: var(--yellow-explosion);
+    }
+
+    .nav-link-prominent:hover {
+      transform: none;
+      background: rgba(251, 191, 36, 0.9);
+      box-shadow: none;
     }
   }
 </style>
