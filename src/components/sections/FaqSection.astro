@@ -35,7 +35,7 @@ const faqs = [
 
 <section id="faq-section" class="section fade-in">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-4xl md:text-5xl font-black text-outline uppercase mb-8 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold text-outline mb-8 text-center">
       Häufige Fragen
     </h2>
     <div class="card">
@@ -107,7 +107,7 @@ const faqs = [
 
 <style>
   .faq-item {
-    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    border-bottom: 1px solid rgba(139, 111, 71, 0.2);
     opacity: 0;
     transition: opacity 0.4s ease-out;
     transition-delay: inherit;
@@ -118,9 +118,10 @@ const faqs = [
   }
 
   .faq-question {
-    font-weight: 900;
-    text-transform: uppercase;
+    font-weight: 600;
+    text-transform: none;
     margin-bottom: 0.5rem;
+    color: var(--text-dark);
   }
 
   .faq-item button {
@@ -162,6 +163,7 @@ const faqs = [
     max-height: 0;
     opacity: 0;
     line-height: 1.6;
+    color: var(--text-dark);
   }
 
   .faq-item[data-open="true"] .faq-answer {

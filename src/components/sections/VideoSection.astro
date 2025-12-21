@@ -1,6 +1,6 @@
 <section class="section fade-in">
   <div class="max-w-4xl mx-auto">
-    <h2 class="text-4xl md:text-5xl font-black text-outline uppercase mb-8 text-center">
+    <h2 class="text-4xl md:text-5xl font-bold text-outline mb-8 text-center">
       Eindrücke
     </h2>
     <div class="video-container">
@@ -26,7 +26,7 @@
       </video>
     </div>
     <div class="text-center mt-4 space-y-3">
-      <p class="text-lg opacity-90">
+      <p class="text-lg text-white opacity-95">
         Wir haben 12 Jahre Erfahrung mit Baseball Camps in anderen Städten. Jetzt bringen wir
         diese Experience nach Magdeburg!
       </p>
@@ -47,8 +47,28 @@
     padding-bottom: 56.25%;
     height: 0;
     overflow: hidden;
-    border: 4px solid black;
-    background: black;
+    border-radius: 16px;
+    background: var(--text-dark);
+    box-shadow: 
+      0 12px 40px var(--shadow-strong),
+      0 4px 12px var(--shadow-medium),
+      inset 0 2px 4px rgba(0, 0, 0, 0.3),
+      inset 0 -2px 4px rgba(0, 0, 0, 0.2);
+    border: 3px solid var(--leather-dark);
+    border-top-color: rgba(139, 111, 71, 0.6);
+    border-bottom-color: rgba(107, 84, 53, 0.8);
+  }
+
+  .video-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, rgba(212, 165, 116, 0.4), transparent);
+    z-index: 1;
+    pointer-events: none;
   }
 
   .video-container iframe,
@@ -59,5 +79,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    border-radius: 13px;
   }
 </style>
