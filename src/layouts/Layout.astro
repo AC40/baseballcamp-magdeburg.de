@@ -9,49 +9,27 @@ import "../styles/global.css";
 	<body>
         <Nav />
         <slot />
-		<script>
-			document.addEventListener("DOMContentLoaded", () => {
-				const observerOptions = {
-					threshold: 0.1,
-					rootMargin: "0px 0px -50px 0px",
-				};
-
-				const observer = new IntersectionObserver((entries) => {
-					entries.forEach((entry) => {
-						if (entry.isIntersecting) {
-							entry.target.classList.add("animate-in");
-						}
-					});
-				}, observerOptions);
-
-				document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
-			});
-
-			const hashAliases: Record<string, string> = {
-				"#kontakt": "#contact",
-			};
-
-			const scrollToHashTarget = () => {
-				const rawHash = window.location.hash;
-				if (!rawHash) return;
-
-				const selector = hashAliases[rawHash.toLowerCase()] ?? rawHash;
-
-				try {
-					const target = document.querySelector(selector);
-					if (target) {
-						target.scrollIntoView({ block: "start" });
-					}
-				} catch {}
-			};
-
-			window.addEventListener("load", () => {
-				//arequestAnimationFrame(scrollToHashTarget);
-			});
-
-			window.addEventListener("hashchange", () => {
-				//requestAnimationFrame(scrollToHashTarget);
-			});
-		</script>
+        
 	</body>
 </html>
+
+
+{/*
+<script>
+	// Fade-in animation on scroll
+	document.addEventListener("DOMContentLoaded", () => {
+	  const observer = new IntersectionObserver(
+		(entries) => {
+		  entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+			  entry.target.classList.add("animate-in");
+			}
+		  });
+		},
+		{ threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
+	  );
+
+	  document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
+	});
+  </script>
+  */}

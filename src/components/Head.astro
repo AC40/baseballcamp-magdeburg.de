@@ -2,13 +2,34 @@
 const title = "Magdeburger Baseball Camp - Mit Coaches aus den USA";
 const description =
   "Baseball Camp in Magdeburg vom 5. bis 9. Juli. Professionelles Training mit Coaches aus den USA.";
+const baseURL = Astro.site || Astro.url.origin || "https://baseballcamp-magdeburg.de";
+const canonicalURL = new URL(Astro.url.pathname, baseURL).toString();
+const ogImage = new URL("/logo.png", baseURL).toString();
 ---
 
 <head>
   <meta charset="utf-8" />
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="generator" content={Astro.generator} />
   <meta name="description" content={description} />
   <title>{title}</title>
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href={canonicalURL} />
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonicalURL} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogImage} />
+  <meta property="og:locale" content="de_DE" />
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:url" content={canonicalURL} />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogImage} />
 </head>

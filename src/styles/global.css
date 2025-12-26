@@ -18,10 +18,12 @@ body {
   overflow-x: hidden;
 }
 
+/*
 .fade-in {
   opacity: 0;
   transition: opacity 0.8s ease-out;
 }
+  */
 
 .fade-in.animate-in {
   opacity: 1;
@@ -69,30 +71,58 @@ body {
 
 .halftone {
   position: absolute;
-  opacity: 0.2;
-  background-image: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0.3) 1px,
-    transparent 1px
-  );
-  background-size: 8px 8px;
   pointer-events: none;
+  z-index: 0;
 }
 
 .halftone-top-left {
   top: 0;
   left: 0;
-  width: 300px;
-  height: 300px;
-  mask: radial-gradient(ellipse at top left, black 0%, transparent 70%);
+  width: 100%;
+  height: 100%;
+  background-image: url("/resources/dot-pattern-top-left-red.png");
+  background-position: top left;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.15;
+  mask: radial-gradient(ellipse at top left, black 0%, transparent 60%);
+  -webkit-mask: radial-gradient(ellipse at top left, black 0%, transparent 60%);
 }
 
 .halftone-bottom-right {
   bottom: 0;
   right: 0;
-  width: 300px;
-  height: 300px;
-  mask: radial-gradient(ellipse at bottom right, black 0%, transparent 70%);
+  width: 100%;
+  height: 100%;
+  background-image: url("/resources/dots-patttern-bottom-right-yellow.png");
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.15;
+  mask: radial-gradient(ellipse at bottom right, black 0%, transparent 60%);
+  -webkit-mask: radial-gradient(
+    ellipse at bottom right,
+    black 0%,
+    transparent 60%
+  );
+}
+
+.sunburst-pattern {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  max-width: 1200px;
+  max-height: 1200px;
+  background-image: url("/resources/sphere-sun-rayes.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.08;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .text-outline {
@@ -193,8 +223,10 @@ body {
 
   .halftone-top-left,
   .halftone-bottom-right {
-    width: 180px;
-    height: 180px;
-    opacity: 0.15;
+    opacity: 0.1;
+  }
+
+  .sunburst-pattern {
+    opacity: 0.06;
   }
 }
