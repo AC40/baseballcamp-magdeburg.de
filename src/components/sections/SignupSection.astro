@@ -4,7 +4,7 @@
       <form
         action="https://api.web3forms.com/submit"
         method="POST"
-        class="space-y-6"
+        class="space-y-0"
         id="signup-form"
       >
         <input type="hidden" name="access_key" value="03f3b4a3-d2e9-40d4-8cef-a3d67718637d" />
@@ -13,80 +13,187 @@
         
         <div id="form-status" role="alert" aria-live="polite" tabindex="-1" class="hidden p-4 rounded border-2 border-white font-bold text-center"></div>
 
-        <div>
-          <label for="signup-name" class="block text-lg font-bold mb-2 uppercase">Name</label>
-          <input
-            id="signup-name"
-            type="text"
-            name="name"
-            class="input-field"
-            placeholder="Max Mustermann"
-            autocomplete="name"
-            required
-          />
+        <!-- Teilnehmer-Informationen -->
+        <div class="space-y-6">
+          <div>
+            <label for="signup-vorname" class="block text-lg font-bold mb-2 uppercase">Vorname</label>
+            <input
+              id="signup-vorname"
+              type="text"
+              name="vorname"
+              class="input-field"
+              placeholder="Max"
+              autocomplete="given-name"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="signup-name" class="block text-lg font-bold mb-2 uppercase">Name</label>
+            <input
+              id="signup-name"
+              type="text"
+              name="name"
+              class="input-field"
+              placeholder="Mustermann"
+              autocomplete="family-name"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="signup-geburtsdatum" class="block text-lg font-bold mb-2 uppercase">Geburtsdatum</label>
+            <input
+              id="signup-geburtsdatum"
+              type="date"
+              name="geburtsdatum"
+              class="input-field"
+              required
+            />
+          </div>
         </div>
-        <div>
-          <label for="signup-email" class="block text-lg font-bold mb-2 uppercase">E-Mail</label>
-          <input
-            id="signup-email"
-            type="email"
-            name="email"
-            class="input-field"
-            placeholder="max@beispiel.de"
-            autocomplete="email"
-            required
-          />
+
+        <!-- Kontaktdaten -->
+        <div class="space-y-6 mt-12">
+          <div>
+            <label for="signup-erziehungsberechtigte" class="block text-lg font-bold mb-2 uppercase">Erziehungsberechtigte/r</label>
+            <input
+              id="signup-erziehungsberechtigte"
+              type="text"
+              name="erziehungsberechtigte"
+              class="input-field"
+              placeholder="Name der Erziehungsberechtigten"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="signup-strasse" class="block text-lg font-bold mb-2 uppercase">Straße</label>
+            <input
+              id="signup-strasse"
+              type="text"
+              name="strasse"
+              class="input-field"
+              placeholder="Musterstraße 123"
+              autocomplete="street-address"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="signup-plz" class="block text-lg font-bold mb-2 uppercase">PLZ</label>
+            <input
+              id="signup-plz"
+              type="text"
+              name="plz"
+              class="input-field"
+              placeholder="39104"
+              autocomplete="postal-code"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="signup-email" class="block text-lg font-bold mb-2 uppercase">E-Mail</label>
+            <input
+              id="signup-email"
+              type="email"
+              name="email"
+              class="input-field"
+              placeholder="max@beispiel.de"
+              autocomplete="email"
+              required
+            />
+          </div>
+
+          <div>
+            <label for="signup-mobil-nr" class="block text-lg font-bold mb-2 uppercase">Mobil-Nr</label>
+            <input
+              id="signup-mobil-nr"
+              type="tel"
+              name="mobil_nr"
+              class="input-field"
+              placeholder="+49 123 456789"
+              autocomplete="tel"
+              required
+            />
+          </div>
         </div>
-        <div>
-          <label for="signup-phone" class="block text-lg font-bold mb-2 uppercase">Telefon</label>
-          <input
-            id="signup-phone"
-            type="tel"
-            name="phone"
-            class="input-field"
-            placeholder="+49 123 456789"
-            autocomplete="tel"
-            required
-          />
+
+        <!-- Camp-Informationen -->
+        <div class="space-y-6 mt-12">
+          <div>
+            <label for="signup-tshirt-groesse" class="block text-lg font-bold mb-2 uppercase">T-Shirt Größe</label>
+            <select id="signup-tshirt-groesse" name="tshirt_groesse" class="input-field" required>
+              <option value="">Bitte wählen</option>
+              <option value="XS">XS</option>
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L">L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="flex items-center gap-2 text-lg mb-2">
+              <input type="checkbox" id="signup-geschwisterkind" name="geschwisterkind" class="w-5 h-5 shrink-0" />
+              <span class="uppercase font-bold">Geschwisterkind</span>
+            </label>
+            <p class="text-sm opacity-70 mb-2 italic">Bitte ankreuzen, wenn das hier angemeldete Kind ein Geschwisterkind einer bereits angemeldeten Person ist.</p>
+            <input
+              id="signup-geschwisterkind-name"
+              type="text"
+              name="geschwisterkind_name"
+              class="input-field mt-2"
+              placeholder="Name des Geschwisterkindes"
+            />
+          </div>
         </div>
-        <div>
-          <label for="signup-jahrgang" class="block text-lg font-bold mb-2 uppercase">Jahrgang</label>
-          <input
-            id="signup-jahrgang"
-            type="number"
-            name="jahrgang"
-            class="input-field"
-            placeholder="z.B. 2012"
-            min="2009"
-            max="2014"
-            required
-          />
-          <p id="signup-jahrgang-hint" class="text-sm opacity-70 mt-1 italic">Teilnahme für Jahrgänge 2009 bis 2014</p>
+
+        <!-- Gesundheit & Ernährung -->
+        <div class="space-y-6 mt-12">
+          <div>
+            <label for="signup-ernaehrung" class="block text-lg font-bold mb-2 uppercase">Ernährung</label>
+            <select id="signup-ernaehrung" name="ernaehrung" class="input-field" required>
+              <option value="">Bitte wählen</option>
+              <option value="mit-fleisch">Mit Fleisch</option>
+              <option value="vegetarisch">Vegetarisch</option>
+              <option value="vegan">Vegan</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="signup-medizinische-hinweise" class="block text-lg font-bold mb-2 uppercase">Medizinische Hinweise</label>
+            <textarea
+              id="signup-medizinische-hinweise"
+              name="medizinische_hinweise"
+              class="input-field"
+              rows="3"
+              placeholder="z.B. Medikamente, Allergien, körperliche Einschränkungen, etc."
+            ></textarea>
+          </div>
         </div>
-        <div>
-          <label for="signup-erfahrungslevel" class="block text-lg font-bold mb-2 uppercase">Erfahrungslevel</label>
-          <select id="signup-erfahrungslevel" name="erfahrungslevel" class="input-field" required>
-            <option value="">Bitte wählen</option>
-            <option value="beginner">Anfänger (noch nie/fast noch nie gespielt)</option>
-            <option value="intermediate">Fortgeschritten (schon häufiger gespielt)</option>
-            <option value="advanced">Erfahren</option>
-          </select>
+
+        <!-- Einverständniserklärungen -->
+        <div class="mt-12">
+          <p class="mb-4">Ich, als Erziehungsberechtigte/r, gebe mein Einverständnis, dass</p>
+          <div class="space-y-3 pl-4">
+            <label class="flex items-center gap-2 text-base">
+              <input type="checkbox" name="einverstaendnis_fotos_videos" class="w-5 h-5 shrink-0" required />
+              <span>Fotos und Videos von meinem Kind gemacht, gespeichert und öffentlich verwendet werden dürfen.</span>
+            </label>
+            <label class="flex items-center gap-2 text-base">
+              <input type="checkbox" name="verbindliche_teilnahme" class="w-5 h-5 shrink-0" required />
+              <span>ich mein Kind verbindlich zum Baseball Camp anmelde</span>
+            </label>
+            <label class="flex items-center gap-2 text-base">
+              <input type="checkbox" name="information_angebote_eastside" class="w-5 h-5 shrink-0" />
+              <span>ich weitere Informationen zu anderen Angeboten der EASTSIDE. jugendgemeinde erhalten möchte (freiwillig)</span>
+            </label>
+          </div>
         </div>
-        <div>
-          <label class="flex items-center gap-2 text-lg">
-            <input id="signup-terms" type="checkbox" name="terms_accepted" class="w-5 h-5" required />
-            <span>
-              Ich akzeptiere die{" "}
-              <a href="/teilnahmebedingungen" class="underline hover:opacity-80" target="_blank">
-                Teilnahmebedingungen
-              </a>{" "}
-              und{" "}
-              <a href="/datenschutzerklärung" class="underline hover:opacity-80" target="_blank">
-                Datenschutzerklärung
-              </a>
-            </span>
-          </label>
-        </div>
+        <br>
         <button type="submit" class="btn-primary w-full">Jetzt Anmelden</button>
       </form>
     </div>

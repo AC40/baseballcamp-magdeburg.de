@@ -3,32 +3,55 @@ const faqs = [
   {
     question: "Für wen ist das Camp geeignet?",
     answer:
-      "Das Camp richtet sich an Jugendliche der Jahrgänge 2009 bis 2014. Du brauchst absolut keine Vorkenntnisse im Baseball – wir bringen dir alles von Grund auf bei!",
+      "Das Camp richtet sich an Jugendliche der Jahrgänge 2009 bis 2014. " +
+      "Du brauchst absolut keine Vorkenntnisse im Baseball – " +
+      "wir bringen dir alles von Grund auf bei!",
   },
   {
     question: "Was muss ich mitbringen?",
     answer:
-      "Eigentlich nur Sportkleidung und gute Laune! Die Baseball-Ausrüstung (Handschuhe, Schläger etc.) stellen wir dir komplett zur Verfügung. Du bekommst außerdem eine eigene Cap und ein T-Shirt deines Teams, das jeden Tag gewaschen wird und das du am Ende mit nach Hause nehmen darfst!",
+      "Eigentlich nur Sportkleidung und gute Laune! " +
+      "Die Baseball-Ausrüstung (Handschuhe, Schläger etc.) stellen wir dir komplett zur Verfügung. " +
+      "Du bekommst außerdem eine eigene Cap und ein T-Shirt deines Teams, " +
+      "das jeden Tag gewaschen wird und das du am Ende mit nach Hause nehmen darfst!",
   },
   {
     question: "Wie lange dauert das Camp täglich?",
     answer:
-      "Wir trainieren und spielen täglich von 9:00 Uhr bis 17:00 Uhr. Dazwischen gibt es gemeinsames Mittagessen, Teamzeiten und ein spannendes Rahmenprogramm.",
+      "Wir trainieren und spielen täglich von 9:00 Uhr bis 17:00 Uhr. " +
+      "Dazwischen gibt es gemeinsames Mittagessen, Teamzeiten und ein spannendes Rahmenprogramm.",
   },
   {
-    question: "Gibt es eine Kostenübernahme?",
+    question: "Wie viel kostet das Camp?",
     answer:
-      "Ja! Die Übernahme der Teilnehmerkosten nach §28 SGB II (Bildung & Teilhabe) ist möglich. Schreib uns dazu einfach eine kurze Nachricht über das Kontaktformular oder per E-Mail.",
+      `Das Camp kostet im Frühbucher-Preis von 60€. ` +
+      `Zusätzlich zu 4 1/2 Tagen vollem Programm, bekommst du ein T-Shirt, ` +
+      `ein Basecap und jeden Tag Mittagessen.<br><br>` +
+      `Sollte es finanziell nicht möglich sein, das Camp zu besuchen, ` +
+      `dann melde dich gerne bei uns. Wir möchten jedem die Teilnahme ermöglichen. ` +
+      `Schreib uns einfach eine E-Mail an <a href="mailto:info@baseballcamp-magdeburg.de">info@baseballcamp-magdeburg.de</a>, und wir finden eine Lösung.`,
   },
   {
     question: "Sprechen die Coaches Deutsch?",
     answer:
-      "Die Coaches kommen aus den USA und sprechen Englisch. Aber keine Sorge: Jedes Team hat mindestens einen deutschen Übersetzer dabei. So lernst du ganz nebenbei und spielerisch auch noch ein bisschen Englisch!",
+      "Die Coaches kommen aus den USA und sprechen Englisch. " +
+      "Aber keine Sorge: Jedes Team hat mindestens einen deutschen Übersetzer dabei. " +
+      "So lernst du ganz nebenbei und spielerisch auch noch ein bisschen Englisch!",
   },
   {
     question: "Wo findet das Camp statt?",
     answer:
-      "Der genaue Treffpunkt in Magdeburg wird noch bekannt gegeben. Wir informieren alle angemeldeten Teilnehmer rechtzeitig vor Camp-Start.",
+      "Das Camp findet statt an Sportanlage Tonschacht Holsteiner Str., 39122 Magdeburg. " +
+      "Die nächste Straßenbahn-Haltestelle ist Sohlener Str. (Linie 2). Wir warten dort morgens auf euch/eure Kinder, damit jeder sicher zum Camp kommt. " +
+      "Falls du nicht weißt, wie du hinkommen kannst, melde dich einfach bei uns.",
+  },
+  {
+    question: "Gibt es Mitfahrgelegenheiten?",
+    answer:
+      "Wer möchte kann während der Woche zum täglichen Treffpunkt am Alten Markt kommen. " +
+      "Von dort aus steigen wir gemeinsam in die Bahn zum Camp. " +
+      "Falls Interesse besteht, gib es einfach in der Anmeldung bei Anmerkung mit an! " +
+      "(Wichtig: Das Bahnticket ist nicht im Camp-Preis inbegriffen und muss selbst besorgt werden.)",
   },
 ];
 ---
@@ -45,7 +68,7 @@ const faqs = [
             <span>{faq.question}</span>
             <span class="faq-icon">+</span>
           </button>
-          <div class="faq-answer text-lg">{faq.answer}</div>
+          <div class="faq-answer text-lg" set:html={faq.answer}></div>
         </div>
       ))}
     </div>
