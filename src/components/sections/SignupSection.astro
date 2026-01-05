@@ -16,7 +16,7 @@
         <!-- Teilnehmer-Informationen -->
         <div class="space-y-6">
           <div>
-            <label for="signup-vorname" class="block text-lg font-bold mb-2 uppercase">Vorname</label>
+            <label for="signup-vorname" class="block md:text-lg font-bold mb-2 uppercase">Vorname</label>
             <input
               id="signup-vorname"
               type="text"
@@ -29,7 +29,7 @@
           </div>
 
           <div>
-            <label for="signup-name" class="block text-lg font-bold mb-2 uppercase">Name</label>
+            <label for="signup-name" class="block md:text-lg font-bold mb-2 uppercase">Name</label>
             <input
               id="signup-name"
               type="text"
@@ -42,7 +42,7 @@
           </div>
 
           <div>
-            <label for="signup-geburtsdatum" class="block text-lg font-bold mb-2 uppercase">Geburtsdatum</label>
+            <label for="signup-geburtsdatum" class="block md:text-lg font-bold mb-2 uppercase">Geburtsdatum</label>
             <input
               id="signup-geburtsdatum"
               type="date"
@@ -50,25 +50,57 @@
               class="input-field"
               required
             />
+            <p class="text-sm opacity-70 italic">Jahrgänge 2009 - 2014</p>
           </div>
+
+
         </div>
 
         <!-- Kontaktdaten -->
         <div class="space-y-6 mt-12">
           <div>
-            <label for="signup-erziehungsberechtigte" class="block text-lg font-bold mb-2 uppercase">Erziehungsberechtigte/r</label>
+            <label for="signup-erziehungsberechtigte" class="block md:text-lg font-bold mb-2 uppercase">Erziehungsberechtigte/r</label>
             <input
               id="signup-erziehungsberechtigte"
               type="text"
               name="erziehungsberechtigte"
               class="input-field"
-              placeholder="Name der Erziehungsberechtigten"
+              placeholder="Namen der Erziehungsberechtigten"
+              required
+            />
+          </div>
+
+
+
+          <div>
+            <label for="signup-email" class="block md:text-lg font-bold mb-2 uppercase">E-Mail</label>
+            <input
+              id="signup-email"
+              type="email"
+              name="email"
+              class="input-field"
+              placeholder="erziehungsberechtigte@beispiel.com"
+              autocomplete="email"
               required
             />
           </div>
 
           <div>
-            <label for="signup-strasse" class="block text-lg font-bold mb-2 uppercase">Straße</label>
+            <label for="signup-mobil-nr" class="block md:text-lg font-bold mb-2 uppercase">Mobil-Nr</label>
+            <input
+              id="signup-mobil-nr"
+              type="tel"
+              name="mobil_nr"
+              class="input-field"
+              placeholder="+49 123 456789"
+              autocomplete="tel"
+              required
+            />
+            <p class="text-sm opacity-70 italic">Um euch im Notfall erreichen zu können, benötigen wir eine Mobilnummer.</p>
+          </div>
+
+          <div>
+            <label for="signup-strasse" class="block md:text-lg font-bold mb-2 uppercase">Straße</label>
             <input
               id="signup-strasse"
               type="text"
@@ -81,7 +113,7 @@
           </div>
 
           <div>
-            <label for="signup-plz" class="block text-lg font-bold mb-2 uppercase">PLZ</label>
+            <label for="signup-plz" class="block md:text-lg font-bold mb-2 uppercase">PLZ</label>
             <input
               id="signup-plz"
               type="text"
@@ -94,28 +126,12 @@
           </div>
 
           <div>
-            <label for="signup-email" class="block text-lg font-bold mb-2 uppercase">E-Mail</label>
+            <label for="signup-ort" class="block md:text-lg font-bold mb-2 uppercase">Ort</label>
             <input
-              id="signup-email"
-              type="email"
-              name="email"
+              id="signup-ort"
+              type="text"
+              name="ort"
               class="input-field"
-              placeholder="max@beispiel.de"
-              autocomplete="email"
-              required
-            />
-          </div>
-
-          <div>
-            <label for="signup-mobil-nr" class="block text-lg font-bold mb-2 uppercase">Mobil-Nr</label>
-            <input
-              id="signup-mobil-nr"
-              type="tel"
-              name="mobil_nr"
-              class="input-field"
-              placeholder="+49 123 456789"
-              autocomplete="tel"
-              required
             />
           </div>
         </div>
@@ -123,7 +139,7 @@
         <!-- Camp-Informationen -->
         <div class="space-y-6 mt-12">
           <div>
-            <label for="signup-tshirt-groesse" class="block text-lg font-bold mb-2 uppercase">T-Shirt Größe</label>
+            <label for="signup-tshirt-groesse" class="block md:text-lg font-bold mb-2 uppercase">T-Shirt Größe</label>
             <select id="signup-tshirt-groesse" name="tshirt_groesse" class="input-field" required>
               <option value="">Bitte wählen</option>
               <option value="XS">XS</option>
@@ -136,7 +152,7 @@
           </div>
 
           <div>
-            <label class="flex items-center gap-2 text-lg mb-2">
+            <label class="flex items-center gap-2 md:text-lg mb-2">
               <input type="checkbox" id="signup-geschwisterkind" name="geschwisterkind" class="w-5 h-5 shrink-0" />
               <span class="uppercase font-bold">Geschwisterkind</span>
             </label>
@@ -154,7 +170,7 @@
         <!-- Gesundheit & Ernährung -->
         <div class="space-y-6 mt-12">
           <div>
-            <label for="signup-ernaehrung" class="block text-lg font-bold mb-2 uppercase">Ernährung</label>
+            <label for="signup-ernaehrung" class="block md:text-lg font-bold mb-2 uppercase">Ernährung</label>
             <select id="signup-ernaehrung" name="ernaehrung" class="input-field" required>
               <option value="">Bitte wählen</option>
               <option value="mit-fleisch">Mit Fleisch</option>
@@ -164,7 +180,7 @@
           </div>
 
           <div>
-            <label for="signup-medizinische-hinweise" class="block text-lg font-bold mb-2 uppercase">Medizinische Hinweise</label>
+            <label for="signup-medizinische-hinweise" class="block md:text-lg font-bold mb-2 uppercase">Medizinische Hinweise</label>
             <textarea
               id="signup-medizinische-hinweise"
               name="medizinische_hinweise"
